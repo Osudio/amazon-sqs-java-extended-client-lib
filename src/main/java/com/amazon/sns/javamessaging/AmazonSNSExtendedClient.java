@@ -51,8 +51,8 @@ import java.util.UUID;
 public class AmazonSNSExtendedClient extends AmazonSNSExtendedClientBase {
     private static final Log LOG = LogFactory.getLog(AmazonSNSExtendedClient.class);
 
-    private ExtendedClientConfiguration clientConfiguration;
-    private S3Helper s3Helper;
+    private final ExtendedClientConfiguration clientConfiguration;
+    private final S3Helper s3Helper;
 
     /**
      * Constructs a new Amazon SNS extended client to invoke service methods on

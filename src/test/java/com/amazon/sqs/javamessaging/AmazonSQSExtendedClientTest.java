@@ -40,7 +40,7 @@ import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.isA;
 
 /**
- * Tests the AmazonSNSExtendedClient class.
+ * Tests the AmazonSQSExtendedClient class.
  */
 public class AmazonSQSExtendedClientTest {
 

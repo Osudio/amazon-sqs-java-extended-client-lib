@@ -31,389 +31,279 @@ abstract class AmazonSNSExtendedClientBase implements AmazonSNS {
         amazonSnsToBeExtended = snsClient;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public AddPermissionResult addPermission(String queueUrl, String label, List<String> aWSAccountIds, List<String> actions)
             throws AmazonClientException {
         return amazonSnsToBeExtended.addPermission(queueUrl, label, aWSAccountIds, actions);
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public ResponseMetadata getCachedResponseMetadata(AmazonWebServiceRequest request) {
         return amazonSnsToBeExtended.getCachedResponseMetadata(request);
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public void setEndpoint(String endpoint) throws IllegalArgumentException {
         amazonSnsToBeExtended.setEndpoint(endpoint);
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public void setRegion(Region region) throws IllegalArgumentException {
         amazonSnsToBeExtended.setRegion(region);
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public void shutdown() {
         amazonSnsToBeExtended.shutdown();
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public AddPermissionResult addPermission(AddPermissionRequest addPermissionRequest) {
         return amazonSnsToBeExtended.addPermission(addPermissionRequest);
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public CheckIfPhoneNumberIsOptedOutResult checkIfPhoneNumberIsOptedOut(CheckIfPhoneNumberIsOptedOutRequest checkIfPhoneNumberIsOptedOutRequest) {
         return amazonSnsToBeExtended.checkIfPhoneNumberIsOptedOut(checkIfPhoneNumberIsOptedOutRequest);
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public ConfirmSubscriptionResult confirmSubscription(ConfirmSubscriptionRequest confirmSubscriptionRequest) {
         return amazonSnsToBeExtended.confirmSubscription(confirmSubscriptionRequest);
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public ConfirmSubscriptionResult confirmSubscription(String s, String s1, String s2) {
-        return amazonSnsToBeExtended.confirmSubscription(s, s1, s2);
+    @Override
+    public ConfirmSubscriptionResult confirmSubscription(String topicArn, String token, String authenticateOnUnsubscribe) {
+        return amazonSnsToBeExtended.confirmSubscription( topicArn,  token,  authenticateOnUnsubscribe);
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public ConfirmSubscriptionResult confirmSubscription(String s, String s1) {
-        return amazonSnsToBeExtended.confirmSubscription(s, s1);
+    @Override
+    public ConfirmSubscriptionResult confirmSubscription(String topicArn, String token) {
+        return amazonSnsToBeExtended.confirmSubscription(topicArn, token);
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public CreatePlatformApplicationResult createPlatformApplication(CreatePlatformApplicationRequest createPlatformApplicationRequest) {
         return amazonSnsToBeExtended.createPlatformApplication(createPlatformApplicationRequest);
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public CreatePlatformEndpointResult createPlatformEndpoint(CreatePlatformEndpointRequest createPlatformEndpointRequest) {
         return amazonSnsToBeExtended.createPlatformEndpoint(createPlatformEndpointRequest);
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public CreateTopicResult createTopic(CreateTopicRequest createTopicRequest) {
         return amazonSnsToBeExtended.createTopic(createTopicRequest);
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public CreateTopicResult createTopic(String s) {
-        return amazonSnsToBeExtended.createTopic(s);
+    @Override
+    public CreateTopicResult createTopic(String name) {
+        return amazonSnsToBeExtended.createTopic(name);
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public DeleteEndpointResult deleteEndpoint(DeleteEndpointRequest deleteEndpointRequest) {
         return amazonSnsToBeExtended.deleteEndpoint(deleteEndpointRequest);
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public DeletePlatformApplicationResult deletePlatformApplication(DeletePlatformApplicationRequest deletePlatformApplicationRequest) {
         return amazonSnsToBeExtended.deletePlatformApplication(deletePlatformApplicationRequest);
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public DeleteTopicResult deleteTopic(DeleteTopicRequest deleteTopicRequest) {
         return amazonSnsToBeExtended.deleteTopic(deleteTopicRequest);
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public DeleteTopicResult deleteTopic(String s) {
-        return amazonSnsToBeExtended.deleteTopic(s);
+    @Override
+    public DeleteTopicResult deleteTopic(String topicArn) {
+        return amazonSnsToBeExtended.deleteTopic(topicArn);
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public GetEndpointAttributesResult getEndpointAttributes(GetEndpointAttributesRequest getEndpointAttributesRequest) {
         return amazonSnsToBeExtended.getEndpointAttributes(getEndpointAttributesRequest);
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public GetPlatformApplicationAttributesResult getPlatformApplicationAttributes(GetPlatformApplicationAttributesRequest getPlatformApplicationAttributesRequest) {
         return amazonSnsToBeExtended.getPlatformApplicationAttributes(getPlatformApplicationAttributesRequest);
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public GetSMSAttributesResult getSMSAttributes(GetSMSAttributesRequest getSMSAttributesRequest) {
         return amazonSnsToBeExtended.getSMSAttributes(getSMSAttributesRequest);
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public GetSubscriptionAttributesResult getSubscriptionAttributes(GetSubscriptionAttributesRequest getSubscriptionAttributesRequest) {
         return amazonSnsToBeExtended.getSubscriptionAttributes(getSubscriptionAttributesRequest);
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public GetSubscriptionAttributesResult getSubscriptionAttributes(String s) {
-        return amazonSnsToBeExtended.getSubscriptionAttributes(s);
+    @Override
+    public GetSubscriptionAttributesResult getSubscriptionAttributes(String subscriptionArn) {
+        return amazonSnsToBeExtended.getSubscriptionAttributes(subscriptionArn);
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public GetTopicAttributesResult getTopicAttributes(GetTopicAttributesRequest getTopicAttributesRequest) {
         return amazonSnsToBeExtended.getTopicAttributes(getTopicAttributesRequest);
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public GetTopicAttributesResult getTopicAttributes(String s) {
-        return amazonSnsToBeExtended.getTopicAttributes(s);
+    @Override
+    public GetTopicAttributesResult getTopicAttributes(String topicArn) {
+        return amazonSnsToBeExtended.getTopicAttributes(topicArn);
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public ListEndpointsByPlatformApplicationResult listEndpointsByPlatformApplication(ListEndpointsByPlatformApplicationRequest listEndpointsByPlatformApplicationRequest) {
         return amazonSnsToBeExtended.listEndpointsByPlatformApplication(listEndpointsByPlatformApplicationRequest);
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public ListPhoneNumbersOptedOutResult listPhoneNumbersOptedOut(ListPhoneNumbersOptedOutRequest listPhoneNumbersOptedOutRequest) {
         return amazonSnsToBeExtended.listPhoneNumbersOptedOut(listPhoneNumbersOptedOutRequest);
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public ListPlatformApplicationsResult listPlatformApplications(ListPlatformApplicationsRequest listPlatformApplicationsRequest) {
         return amazonSnsToBeExtended.listPlatformApplications(listPlatformApplicationsRequest);
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public ListPlatformApplicationsResult listPlatformApplications() {
         return amazonSnsToBeExtended.listPlatformApplications();
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public ListSubscriptionsResult listSubscriptions(ListSubscriptionsRequest listSubscriptionsRequest) {
         return amazonSnsToBeExtended.listSubscriptions(listSubscriptionsRequest);
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public ListSubscriptionsResult listSubscriptions() {
         return amazonSnsToBeExtended.listSubscriptions();
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public ListSubscriptionsResult listSubscriptions(String s) {
-        return amazonSnsToBeExtended.listSubscriptions(s);
+    @Override
+    public ListSubscriptionsResult listSubscriptions(String nextToken) {
+        return amazonSnsToBeExtended.listSubscriptions(nextToken);
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public ListSubscriptionsByTopicResult listSubscriptionsByTopic(ListSubscriptionsByTopicRequest listSubscriptionsByTopicRequest) {
         return amazonSnsToBeExtended.listSubscriptionsByTopic(listSubscriptionsByTopicRequest);
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public ListSubscriptionsByTopicResult listSubscriptionsByTopic(String s) {
-        return amazonSnsToBeExtended.listSubscriptionsByTopic(s);
+    @Override
+    public ListSubscriptionsByTopicResult listSubscriptionsByTopic(String topicArn) {
+        return amazonSnsToBeExtended.listSubscriptionsByTopic(topicArn);
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public ListSubscriptionsByTopicResult listSubscriptionsByTopic(String s, String s1) {
-        return amazonSnsToBeExtended.listSubscriptionsByTopic(s, s1);
+    @Override
+    public ListSubscriptionsByTopicResult listSubscriptionsByTopic(String topicArn, String nextToken) {
+        return amazonSnsToBeExtended.listSubscriptionsByTopic(topicArn, nextToken);
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public ListTopicsResult listTopics(ListTopicsRequest listTopicsRequest) {
         return amazonSnsToBeExtended.listTopics(listTopicsRequest);
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public ListTopicsResult listTopics() {
         return amazonSnsToBeExtended.listTopics();
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public ListTopicsResult listTopics(String s) {
-        return amazonSnsToBeExtended.listTopics(s);
+    @Override
+    public ListTopicsResult listTopics(String nextToken) {
+        return amazonSnsToBeExtended.listTopics(nextToken);
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public OptInPhoneNumberResult optInPhoneNumber(OptInPhoneNumberRequest optInPhoneNumberRequest) {
         return amazonSnsToBeExtended.optInPhoneNumber(optInPhoneNumberRequest);
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public PublishResult publish(PublishRequest publishRequest) {
         return amazonSnsToBeExtended.publish(publishRequest);
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public PublishResult publish(String topicArn, String message) {
         return publish(topicArn, message);
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public PublishResult publish(String topicArn, String message, String subject) {
         final PublishRequest publishRequest = new PublishRequest(topicArn, message);
         return publish(publishRequest);
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public RemovePermissionResult removePermission(RemovePermissionRequest removePermissionRequest) {
         return amazonSnsToBeExtended.removePermission(removePermissionRequest);
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public RemovePermissionResult removePermission(String s, String s1) {
-        return amazonSnsToBeExtended.removePermission(s, s1);
+    @Override
+    public RemovePermissionResult removePermission(String topicArn, String label) {
+        return amazonSnsToBeExtended.removePermission(topicArn, label);
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public SetEndpointAttributesResult setEndpointAttributes(SetEndpointAttributesRequest setEndpointAttributesRequest) {
         return amazonSnsToBeExtended.setEndpointAttributes(setEndpointAttributesRequest);
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public SetPlatformApplicationAttributesResult setPlatformApplicationAttributes(SetPlatformApplicationAttributesRequest setPlatformApplicationAttributesRequest) {
         return amazonSnsToBeExtended.setPlatformApplicationAttributes(setPlatformApplicationAttributesRequest);
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public SetSMSAttributesResult setSMSAttributes(SetSMSAttributesRequest setSMSAttributesRequest) {
         return amazonSnsToBeExtended.setSMSAttributes(setSMSAttributesRequest);
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public SetSubscriptionAttributesResult setSubscriptionAttributes(SetSubscriptionAttributesRequest setSubscriptionAttributesRequest) {
         return amazonSnsToBeExtended.setSubscriptionAttributes(setSubscriptionAttributesRequest);
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public SetSubscriptionAttributesResult setSubscriptionAttributes(String s, String s1, String s2) {
-        return amazonSnsToBeExtended.setSubscriptionAttributes(s, s1, s2);
+    @Override
+    public SetSubscriptionAttributesResult setSubscriptionAttributes(String subscriptionArn, String attributeName, String attributeValue) {
+        return amazonSnsToBeExtended.setSubscriptionAttributes(subscriptionArn, attributeName, attributeValue);
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public SetTopicAttributesResult setTopicAttributes(SetTopicAttributesRequest setTopicAttributesRequest) {
         return amazonSnsToBeExtended.setTopicAttributes(setTopicAttributesRequest);
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public SetTopicAttributesResult setTopicAttributes(String s, String s1, String s2) {
-        return amazonSnsToBeExtended.setTopicAttributes(s, s1, s2);
+    @Override
+    public SetTopicAttributesResult setTopicAttributes(String topicArn, String attributeName, String attributeValue) {
+        return amazonSnsToBeExtended.setTopicAttributes(topicArn, attributeName, attributeValue);
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public SubscribeResult subscribe(SubscribeRequest subscribeRequest) {
         return amazonSnsToBeExtended.subscribe(subscribeRequest);
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public SubscribeResult subscribe(String s, String s1, String s2) {
-        return amazonSnsToBeExtended.subscribe(s, s1, s2);
+    @Override
+    public SubscribeResult subscribe(String topicArn, String protocol, String endpoint) {
+        return amazonSnsToBeExtended.subscribe(topicArn, protocol, endpoint);
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public UnsubscribeResult unsubscribe(UnsubscribeRequest unsubscribeRequest) {
         return amazonSnsToBeExtended.unsubscribe(unsubscribeRequest);
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public UnsubscribeResult unsubscribe(String s) {
         return amazonSnsToBeExtended.unsubscribe(s);
     }

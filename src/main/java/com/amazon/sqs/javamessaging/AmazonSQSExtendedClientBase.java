@@ -68,280 +68,206 @@ abstract class AmazonSQSExtendedClientBase implements AmazonSQS {
 		amazonSqsToBeExtended = sqsClient;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	@Override
 	public SendMessageResult sendMessage(SendMessageRequest sendMessageRequest) {
 		return amazonSqsToBeExtended.sendMessage(sendMessageRequest);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	@Override
 	public ReceiveMessageResult receiveMessage(ReceiveMessageRequest receiveMessageRequest) {
 		return amazonSqsToBeExtended.receiveMessage(receiveMessageRequest);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	@Override
 	public DeleteMessageResult deleteMessage(DeleteMessageRequest deleteMessageRequest) {
 		return amazonSqsToBeExtended.deleteMessage(deleteMessageRequest);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	@Override
 	public SendMessageResult sendMessage(String queueUrl, String messageBody) throws AmazonClientException {
 		return amazonSqsToBeExtended.sendMessage(queueUrl, messageBody);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	@Override
 	public ReceiveMessageResult receiveMessage(String queueUrl) throws AmazonClientException {
 		return amazonSqsToBeExtended.receiveMessage(queueUrl);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	@Override
 	public DeleteMessageResult deleteMessage(String queueUrl, String receiptHandle) throws AmazonClientException {
 		return amazonSqsToBeExtended.deleteMessage(queueUrl, receiptHandle);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	@Override
 	public SetQueueAttributesResult setQueueAttributes(SetQueueAttributesRequest setQueueAttributesRequest) throws
 			AmazonClientException {
 		return amazonSqsToBeExtended.setQueueAttributes(setQueueAttributesRequest);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	@Override
 	public ChangeMessageVisibilityBatchResult changeMessageVisibilityBatch(
 			ChangeMessageVisibilityBatchRequest changeMessageVisibilityBatchRequest) throws AmazonClientException {
 		return amazonSqsToBeExtended.changeMessageVisibilityBatch(changeMessageVisibilityBatchRequest);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	@Override
 	public ChangeMessageVisibilityResult changeMessageVisibility(ChangeMessageVisibilityRequest changeMessageVisibilityRequest)
 			throws AmazonClientException {
 		return amazonSqsToBeExtended.changeMessageVisibility(changeMessageVisibilityRequest);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	@Override
 	public GetQueueUrlResult getQueueUrl(GetQueueUrlRequest getQueueUrlRequest)
 			throws AmazonClientException {
 		return amazonSqsToBeExtended.getQueueUrl(getQueueUrlRequest);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	@Override
 	public RemovePermissionResult removePermission(RemovePermissionRequest removePermissionRequest)
 			throws AmazonClientException {
 		return amazonSqsToBeExtended.removePermission(removePermissionRequest);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	@Override
 	public GetQueueAttributesResult getQueueAttributes(GetQueueAttributesRequest getQueueAttributesRequest)
 			throws AmazonClientException {
 		return amazonSqsToBeExtended.getQueueAttributes(getQueueAttributesRequest);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	@Override
 	public PurgeQueueResult purgeQueue(PurgeQueueRequest purgeQueueRequest) throws AmazonClientException {
 		return amazonSqsToBeExtended.purgeQueue(purgeQueueRequest);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	@Override
 	public ListDeadLetterSourceQueuesResult listDeadLetterSourceQueues(
 			ListDeadLetterSourceQueuesRequest listDeadLetterSourceQueuesRequest) throws
 			AmazonClientException {
 		return amazonSqsToBeExtended.listDeadLetterSourceQueues(listDeadLetterSourceQueuesRequest);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	@Override
 	public DeleteQueueResult deleteQueue(DeleteQueueRequest deleteQueueRequest) throws AmazonClientException {
 		return amazonSqsToBeExtended.deleteQueue(deleteQueueRequest);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	@Override
 	public ListQueuesResult listQueues(ListQueuesRequest listQueuesRequest) throws AmazonClientException {
 		return amazonSqsToBeExtended.listQueues(listQueuesRequest);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	@Override
 	public DeleteMessageBatchResult deleteMessageBatch(DeleteMessageBatchRequest deleteMessageBatchRequest)
 			throws AmazonClientException {
 
 		return amazonSqsToBeExtended.deleteMessageBatch(deleteMessageBatchRequest);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	@Override
 	public CreateQueueResult createQueue(CreateQueueRequest createQueueRequest) throws AmazonClientException {
 
 		return amazonSqsToBeExtended.createQueue(createQueueRequest);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	@Override
 	public AddPermissionResult addPermission(AddPermissionRequest addPermissionRequest) throws AmazonClientException {
 		return amazonSqsToBeExtended.addPermission(addPermissionRequest);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	@Override
 	public ListQueuesResult listQueues() throws AmazonClientException {
 		return amazonSqsToBeExtended.listQueues();
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	@Override
 	public SetQueueAttributesResult setQueueAttributes(String queueUrl, Map<String, String> attributes)
 			throws AmazonClientException {
 		return amazonSqsToBeExtended.setQueueAttributes(queueUrl, attributes);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	@Override
 	public ChangeMessageVisibilityBatchResult changeMessageVisibilityBatch(String queueUrl,
-			List<ChangeMessageVisibilityBatchRequestEntry> entries) throws AmazonClientException {
+																		   List<ChangeMessageVisibilityBatchRequestEntry> entries) throws AmazonClientException {
 		return amazonSqsToBeExtended.changeMessageVisibilityBatch(queueUrl, entries);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	@Override
 	public ChangeMessageVisibilityResult changeMessageVisibility(String queueUrl, String receiptHandle, Integer visibilityTimeout)
 			throws AmazonClientException {
 		return amazonSqsToBeExtended.changeMessageVisibility(queueUrl, receiptHandle, visibilityTimeout);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	@Override
 	public GetQueueUrlResult getQueueUrl(String queueName) throws AmazonClientException {
 		return amazonSqsToBeExtended.getQueueUrl(queueName);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	@Override
 	public RemovePermissionResult removePermission(String queueUrl, String label) throws AmazonClientException {
 		return amazonSqsToBeExtended.removePermission(queueUrl, label);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	@Override
 	public GetQueueAttributesResult getQueueAttributes(String queueUrl, List<String> attributeNames)
 			throws AmazonClientException {
 		return amazonSqsToBeExtended.getQueueAttributes(queueUrl, attributeNames);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	@Override
 	public SendMessageBatchResult sendMessageBatch(String queueUrl, List<SendMessageBatchRequestEntry> entries)
 			throws AmazonClientException {
 		return amazonSqsToBeExtended.sendMessageBatch(queueUrl, entries);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	@Override
 	public DeleteQueueResult deleteQueue(String queueUrl) throws AmazonClientException {
 		return amazonSqsToBeExtended.deleteQueue(queueUrl);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	@Override
 	public ListQueuesResult listQueues(String queueNamePrefix) throws AmazonClientException {
 
 		return amazonSqsToBeExtended.listQueues(queueNamePrefix);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	@Override
 	public DeleteMessageBatchResult deleteMessageBatch(String queueUrl, List<DeleteMessageBatchRequestEntry> entries)
 			throws AmazonClientException {
 		return amazonSqsToBeExtended.deleteMessageBatch(queueUrl, entries);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	@Override
 	public CreateQueueResult createQueue(String queueName) throws AmazonClientException {
 		return amazonSqsToBeExtended.createQueue(queueName);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	@Override
 	public AddPermissionResult addPermission(String queueUrl, String label, List<String> aWSAccountIds, List<String> actions)
 			throws AmazonClientException {
 		return amazonSqsToBeExtended.addPermission(queueUrl, label, aWSAccountIds, actions);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	@Override
 	public ResponseMetadata getCachedResponseMetadata(AmazonWebServiceRequest request) {
 		return amazonSqsToBeExtended.getCachedResponseMetadata(request);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	@Override
 	public void setEndpoint(String endpoint) throws IllegalArgumentException {
 		amazonSqsToBeExtended.setEndpoint(endpoint);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	@Override
 	public void setRegion(Region region) throws IllegalArgumentException {
 		amazonSqsToBeExtended.setRegion(region);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	@Override
 	public SendMessageBatchResult sendMessageBatch(SendMessageBatchRequest sendMessageBatchRequest) {
 		return amazonSqsToBeExtended.sendMessageBatch(sendMessageBatchRequest);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	@Override
 	public void shutdown() {
 		amazonSqsToBeExtended.shutdown();
 	}
