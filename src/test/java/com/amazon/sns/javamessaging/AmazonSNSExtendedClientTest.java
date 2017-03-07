@@ -13,41 +13,37 @@
  * permissions and limitations under the License.
  */
 
-package com.amazon.sqs.javamessaging;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+package com.amazon.sns.javamessaging;
 
 import com.amazon.javamessaging.ExtendedClientConfiguration;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.PutObjectRequest;
+import com.amazonaws.services.sns.AmazonSNS;
+import com.amazonaws.services.sns.AmazonSNSClient;
+import com.amazonaws.services.sns.model.PublishRequest;
 import com.amazonaws.services.sqs.AmazonSQS;
 import com.amazonaws.services.sqs.AmazonSQSClient;
 import com.amazonaws.services.sqs.model.SendMessageBatchRequest;
 import com.amazonaws.services.sqs.model.SendMessageBatchRequestEntry;
 import com.amazonaws.services.sqs.model.SendMessageRequest;
-
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.spy;
-import static org.mockito.Mockito.when;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.never;
-import static org.mockito.Mockito.isA;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import static org.mockito.Mockito.*;
 
 /**
- * Tests the AmazonSQSExtendedClient class.
+ * Tests the AmazonSNSExtendedClient class.
  */
-public class AmazonSQSExtendedClientTest {
+public class AmazonSNSExtendedClientTest {
 
-    private AmazonSQS sqs;
+    private AmazonSNS sns;
     private AmazonS3 s3;
     private static final String S3_BUCKET_NAME = "test-bucket-name";
-    private static final String SQS_QUEUE_URL = "test-queue-url";
+    private static final String SNS_TOPIC_ARN = "test-topic-arn";
     private static final int SQS_SIZE_LIMIT = 262144;
 
     @Before
@@ -58,7 +54,7 @@ public class AmazonSQSExtendedClientTest {
         ExtendedClientConfiguration extendedClientConfiguration = new ExtendedClientConfiguration()
                 .withLargePayloadSupportEnabled(s3, S3_BUCKET_NAME);
 
-        sqs = spy(new AmazonSQSExtendedClient(mock(AmazonSQSClient.class), extendedClientConfiguration));
+        sns = spy(new AmazonSNSExtendedClient(mock(AmazonSNSClient.class), extendedClientConfiguration));
 
     }
 
@@ -68,9 +64,9 @@ public class AmazonSQSExtendedClientTest {
 		int messageLength = SQS_SIZE_LIMIT + 1;
 		String messageBody = generateString(messageLength);
 
-		SendMessageRequest messageRequest = new SendMessageRequest(SQS_QUEUE_URL, messageBody);
+		PublishRequest publishRequest = new PublishRequest(SNS_TOPIC_ARN, messageBody);
 
-		sqs.sendMessage(messageRequest);
+		sns.publish(publishRequest);
 		verify(s3, times(1)).putObject(isA(PutObjectRequest.class));
 	}
 
@@ -79,8 +75,8 @@ public class AmazonSQSExtendedClientTest {
 		int messageLength = SQS_SIZE_LIMIT;
 		String messageBody = generateString(messageLength);
 
-		SendMessageRequest messageRequest = new SendMessageRequest(SQS_QUEUE_URL, messageBody);
-		sqs.sendMessage(messageRequest);
+        PublishRequest publishRequest = new PublishRequest(SNS_TOPIC_ARN, messageBody);
+		sns.publish(publishRequest);
 		verify(s3, never()).putObject(isA(PutObjectRequest.class));
 	}
 
@@ -92,10 +88,10 @@ public class AmazonSQSExtendedClientTest {
         ExtendedClientConfiguration extendedClientConfiguration = new ExtendedClientConfiguration()
                 .withLargePayloadSupportDisabled();
 
-        AmazonSQS sqsExtended = spy(new AmazonSQSExtendedClient(mock(AmazonSQSClient.class), extendedClientConfiguration));
+        AmazonSNS snsExtended = spy(new AmazonSNSExtendedClient(mock(AmazonSNSClient.class), extendedClientConfiguration));
 
-        SendMessageRequest messageRequest = new SendMessageRequest(SQS_QUEUE_URL, messageBody);
-        sqsExtended.sendMessage(messageRequest);
+        PublishRequest publishRequest = new PublishRequest(SNS_TOPIC_ARN, messageBody);
+        snsExtended.publish(publishRequest);
         verify(s3, never()).putObject(isA(PutObjectRequest.class));
     }
 
@@ -107,11 +103,10 @@ public class AmazonSQSExtendedClientTest {
         ExtendedClientConfiguration extendedClientConfiguration = new ExtendedClientConfiguration()
                 .withLargePayloadSupportEnabled(s3, S3_BUCKET_NAME).withAlwaysThroughS3(true);
 
-        AmazonSQS sqsExtended = spy(new AmazonSQSExtendedClient(mock(AmazonSQSClient.class), extendedClientConfiguration));
+        AmazonSNS snsExtended = spy(new AmazonSNSExtendedClient(mock(AmazonSNSClient.class), extendedClientConfiguration));
 
-
-        SendMessageRequest messageRequest = new SendMessageRequest(SQS_QUEUE_URL, messageBody);
-        sqsExtended.sendMessage(messageRequest);
+        PublishRequest publishRequest = new PublishRequest(SNS_TOPIC_ARN, messageBody);
+        snsExtended.publish(publishRequest);
         verify(s3, times(1)).putObject(isA(PutObjectRequest.class));
     }
 
@@ -123,31 +118,12 @@ public class AmazonSQSExtendedClientTest {
         ExtendedClientConfiguration extendedClientConfiguration = new ExtendedClientConfiguration()
                 .withLargePayloadSupportEnabled(s3, S3_BUCKET_NAME).withMessageSizeThreshold(500);
 
-        AmazonSQS sqsExtended = spy(new AmazonSQSExtendedClient(mock(AmazonSQSClient.class), extendedClientConfiguration));
+        AmazonSNS snsExtended = spy(new AmazonSNSExtendedClient(mock(AmazonSNSClient.class), extendedClientConfiguration));
 
-        SendMessageRequest messageRequest = new SendMessageRequest(SQS_QUEUE_URL, messageBody);
-        sqsExtended.sendMessage(messageRequest);
+        PublishRequest publishRequest = new PublishRequest(SNS_TOPIC_ARN, messageBody);
+        snsExtended.publish(publishRequest);
         verify(s3, times(1)).putObject(isA(PutObjectRequest.class));
     }
-
-	@Test
-	public void testMessageBatch() {
-
-		List<SendMessageBatchRequestEntry> batchEntries = new ArrayList<SendMessageBatchRequestEntry>();
-
-		for (int i = 1; i <= 10; i++) {
-			SendMessageBatchRequestEntry entry = new SendMessageBatchRequestEntry();
-			int messageLength = i * 100000;
-			String messageBody = generateString(messageLength);
-			entry.setMessageBody(messageBody);
-			entry.setId("entry_" + i);
-			batchEntries.add(entry);
-		}
-
-		SendMessageBatchRequest batchRequest = new SendMessageBatchRequest(SQS_QUEUE_URL, batchEntries);
-        sqs.sendMessageBatch(batchRequest);
-		verify(s3, times(8)).putObject(isA(PutObjectRequest.class));
-	}
 
 	private String generateString(int messageLength) {
 		char[] charArray = new char[messageLength];

@@ -13,7 +13,7 @@
  * permissions and limitations under the License.
  */
 
-package com.amazon.sqs.javamessaging;
+package com.amazon.javamessaging;
 
 /**
  * This class is used for carrying pointer to Amazon S3 objects which contain
@@ -21,7 +21,7 @@ package com.amazon.sqs.javamessaging;
  * will be serialized to JSON and sent through Amazon SQS.
  * 
  */
-class MessageS3Pointer {
+public class MessageS3Pointer {
 	private String s3BucketName;
 	private String s3Key;
 
