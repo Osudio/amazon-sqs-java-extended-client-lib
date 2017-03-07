@@ -13,7 +13,7 @@
  * permissions and limitations under the License.
  */
 
-package com.amazon.sqs.javamessaging;
+package com.amazon.javamessaging;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -27,7 +27,7 @@ import com.fasterxml.jackson.databind.ObjectMapper.DefaultTyping;
  * provided for serializing an object to JSON and deserializing from JSON to an
  * object.
  */
-class JsonDataConverter {
+public class JsonDataConverter {
 
 	protected final ObjectMapper objectMapper;
 

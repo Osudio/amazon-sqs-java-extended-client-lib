@@ -13,13 +13,13 @@
  * permissions and limitations under the License.
  */
 
-package com.amazon.sqs.javamessaging;
+package com.amazon.sns.javamessaging;
 
 import com.amazonaws.util.VersionInfoUtils;
 
-class SQSExtendedClientConstants {
-	public static final String RESERVED_ATTRIBUTE_NAME = "SQSLargePayloadSize";
+class SNSExtendedClientConstants {
+	public static final String RESERVED_ATTRIBUTE_NAME = "SNSLargePayloadSize";
 	public static final int MAX_ALLOWED_ATTRIBUTES = 9;
 
-	static final String USER_AGENT_HEADER = AmazonSQSExtendedClient.class.getSimpleName() + "/" + VersionInfoUtils.getVersion();
+	static final String USER_AGENT_HEADER = AmazonSNSExtendedClient.class.getSimpleName() + "/" + VersionInfoUtils.getVersion();
 }

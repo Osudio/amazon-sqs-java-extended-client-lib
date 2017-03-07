@@ -13,7 +13,7 @@
  * permissions and limitations under the License.
  */
 
-package com.amazon.sqs.javamessaging;
+package com.amazon.javamessaging;
 
 import java.io.OutputStream;
 
@@ -23,7 +23,7 @@ import java.io.OutputStream;
  * String.getBytes().length, it is more efficient and reliable for large
  * strings.
  */
-class CountingOutputStream extends OutputStream {
+public class CountingOutputStream extends OutputStream {
 	private long totalSize;
 
 	@Override

@@ -13,15 +13,13 @@
  * permissions and limitations under the License.
  */
 
-package com.amazon.sqs.javamessaging;
+package com.amazon.javamessaging;
 
 import com.amazonaws.AmazonClientException;
 import com.amazonaws.services.s3.AmazonS3;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.http.annotation.NotThreadSafe;
-
-import java.util.List;
 
 /**
  * Amazon SQS extended client configuration options such as Amazon S3 client,
@@ -35,7 +33,7 @@ public class ExtendedClientConfiguration {
 	private String s3BucketName;
 	private boolean largePayloadSupport = false;
 	private boolean alwaysThroughS3 = false;
-	private int messageSizeThreshold = SQSExtendedClientConstants.DEFAULT_MESSAGE_SIZE_THRESHOLD;
+	private int messageSizeThreshold = ExtendedClientConstants.DEFAULT_MESSAGE_SIZE_THRESHOLD;
 
 	public ExtendedClientConfiguration() {
 		s3 = null;

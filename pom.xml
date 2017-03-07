@@ -6,15 +6,16 @@
 
   <groupId>com.amazonaws</groupId>
   <artifactId>amazon-sqs-java-extended-client-lib</artifactId>
-  <version>1.0.0-aws-1.11.40</version>
+  <version>1.1.0-aws-1.11.40-EXTENDED</version>
   <packaging>jar</packaging>
-  <name>Amazon SQS Extended Client Library for Java</name>
-  <description>An extension to the Amazon SQS client that enables sending and receiving messages up to 2GB via Amazon S3.
+  <name>Amazon SQS/SNS Extended Client Library for Java</name>
+  <description>An extension to the Amazon SQS/SNSclient that enables sending and receiving messages up to 2GB via Amazon S3.
   </description>
   <url>https://github.com/awslabs/amazon-sqs-java-extended-client-lib/</url>
 
   <scm>
-    <url>https://github.com/awslabs/amazon-sqs-java-extended-client-lib.git</url>
+    <!--<url>https://github.com/awslabs/amazon-sqs-java-extended-client-lib.git</url>-->
+    <url>https://github.com/Osudio/amazon-sqs-java-extended-client-lib</url>
   </scm>
 
   <licenses>
@@ -34,6 +35,14 @@
         <role>developer</role>
       </roles>
     </developer>
+    <developer>
+      <id>osudio</id>
+      <organization>Osudio</organization>
+      <organizationUrl>https://www.osudio.com</organizationUrl>
+      <roles>
+        <role>developer</role>
+      </roles>
+    </developer>
   </developers>
 
   <properties>
@@ -41,6 +50,11 @@
   </properties>
 
   <dependencies>
+    <dependency>
+      <groupId>com.amazonaws</groupId>
+      <artifactId>aws-java-sdk-sns</artifactId>
+      <version>${aws-java-sdk.version}</version>
+    </dependency>
     <dependency>
       <groupId>com.amazonaws</groupId>
       <artifactId>aws-java-sdk-sqs</artifactId>

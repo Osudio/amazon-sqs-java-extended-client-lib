@@ -13,13 +13,18 @@
  * permissions and limitations under the License.
  */
 
-package com.amazon.sqs.javamessaging;
+package com.amazon.javamessaging;
 
+import com.amazon.javamessaging.ExtendedClientConfiguration;
+import com.amazon.javamessaging.ExtendedClientConstants;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 import junit.framework.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Matchers;
+import org.mockito.Mockito;
+
 import static org.mockito.Matchers.isA;
 import static org.mockito.Mockito.*;
 
@@ -38,8 +43,8 @@ public class ExtendedClientConfigurationTest {
     @Test
     public void testCopyConstructor() {
 
-        AmazonS3 s3 = mock(AmazonS3.class);
-        when(s3.putObject(isA(PutObjectRequest.class))).thenReturn(null);
+        AmazonS3 s3 = Mockito.mock(AmazonS3.class);
+        Mockito.when(s3.putObject(Matchers.isA(PutObjectRequest.class))).thenReturn(null);
 
         boolean alwaysThroughS3 = true;
         int messageSizeThreshold = 500;
@@ -63,8 +68,8 @@ public class ExtendedClientConfigurationTest {
     @Test
     public void testLargePayloadSupportEnabled() {
 
-        AmazonS3 s3 = mock(AmazonS3.class);
-        when(s3.putObject(isA(PutObjectRequest.class))).thenReturn(null);
+        AmazonS3 s3 = Mockito.mock(AmazonS3.class);
+        Mockito.when(s3.putObject(Matchers.isA(PutObjectRequest.class))).thenReturn(null);
 
         ExtendedClientConfiguration extendedClientConfiguration = new ExtendedClientConfiguration();
         extendedClientConfiguration.setLargePayloadSupportEnabled(s3, s3BucketName);
@@ -78,8 +83,8 @@ public class ExtendedClientConfigurationTest {
     @Test
     public void testDisableLargePayloadSupport() {
 
-        AmazonS3 s3 = mock(AmazonS3.class);
-        when(s3.putObject(isA(PutObjectRequest.class))).thenReturn(null);
+        AmazonS3 s3 = Mockito.mock(AmazonS3.class);
+        Mockito.when(s3.putObject(Matchers.isA(PutObjectRequest.class))).thenReturn(null);
 
         ExtendedClientConfiguration extendedClientConfiguration = new ExtendedClientConfiguration();
         extendedClientConfiguration.setLargePayloadSupportDisabled();
@@ -87,7 +92,7 @@ public class ExtendedClientConfigurationTest {
         Assert.assertNull(extendedClientConfiguration.getAmazonS3Client());
         Assert.assertNull(extendedClientConfiguration.getS3BucketName());
 
-        verify(s3, never()).putObject(isA(PutObjectRequest.class));
+        Mockito.verify(s3, Mockito.never()).putObject(Matchers.isA(PutObjectRequest.class));
     }
 
     @Test
@@ -107,7 +112,7 @@ public class ExtendedClientConfigurationTest {
 
         ExtendedClientConfiguration extendedClientConfiguration = new ExtendedClientConfiguration();
 
-        Assert.assertEquals(SQSExtendedClientConstants.DEFAULT_MESSAGE_SIZE_THRESHOLD,
+        Assert.assertEquals(ExtendedClientConstants.DEFAULT_MESSAGE_SIZE_THRESHOLD,
                 extendedClientConfiguration.getMessageSizeThreshold());
 
         int messageLength = 1000;
